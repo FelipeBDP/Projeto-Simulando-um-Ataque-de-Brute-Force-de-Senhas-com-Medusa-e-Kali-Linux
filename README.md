@@ -18,8 +18,8 @@ Sobre o comando nmap -sS endereço de rede/24, o -sS envia pacotes TCP com a fla
 
 Abaixo segue o prints da tela com a saída do comando:
 
-![nome-da-imagem](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_06.png?raw=true)
-![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.png?raw=true)
+![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_06.png?raw=true)
+![nome-da-imagem2](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.png?raw=true)
 
 ### Verificando quais portas estão abertas
 
@@ -29,7 +29,7 @@ Este comando escaneia as portas 21(ftp) ,22(ssh) ,80(http) ,445(smdb) e 139(smdb
 
 Abaixo segue o print da tela com a saída do comando:
 
-![nome-da-imagem2](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_20.png?raw=true)
+![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_20.png?raw=true)
 
 ### Verificando se a porta FTP está ativa
 
@@ -37,7 +37,7 @@ Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta 
 
 Abaixo segue o print da tela com a saída do comando:
 
-![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-teste.png?raw=true)
+![nome-da-imagem4](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-teste.png?raw=true)
 
 ### Preparando o ataque Brute Force
 
@@ -60,7 +60,7 @@ Usando novamente o comando ftp endereço de ip, iremos digitar o usuário msfadm
 
 Conforme pode ser visto na imagem abaixo, consegumos acessar acesso a porta FTP com sucesso.
 
-![nome-da-imagem5](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-sucesso.png?raw=true)
+![nome-da-imagem6](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-sucesso.png?raw=true)
 
 ### Simulando Ataque web (http) Simulando ataque brute force em formulários de login web (http) no sistema dvwa
 
