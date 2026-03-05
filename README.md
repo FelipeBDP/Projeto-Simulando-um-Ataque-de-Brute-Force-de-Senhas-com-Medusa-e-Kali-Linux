@@ -80,9 +80,23 @@ Segue resultado do comando:
 
 ### Um resultado não esperado
 
-Seguindo os passos da instrutora, percebei que tinha algo errado. Como pode ser notado na imagem abaixo, todos
+Seguindo os passos da instrutora percebei que tinha algo errado. Como pode ser notado na imagem anterior, todos os usuários e senhas retornaram sucesso. Mas somente o usuário admin e a senha password eram as credenciais corretas. Isso ficou evidnete quando a instrutora tentou usar outras credenciais para acessa a página que tinhamos acabado de atacar. Isso me fez questionar se o Medusa tinha problema com falso positivo. O falso positivo acontece quando um resposta falsa é classificada como correta ou o inverso acontece. Em nosso exemplo tinhamos 16 combinações mais somente 1 era a correta. Para verificar se o problema era do Medusa, decidi usar um outro software que tinha sido abordado na parte introdutório da simulação. O software em questão é o Hydra. O Hydra também permite fazer ataque de brute force como o Medusa.
 
-### Simulando Ataque SMB (Server Message Block) Simulando ataques de enumeração e spraying contra o serviço SMB (Server Message Block)
+### Refazendo o ataque com o Hydra
+
+Para realizar o ataque com o Hydra, usei  comando: hydra -L users.txt -P pass.txt endereço ip -V http-form-post '/dvwa/login.php:Username=^USER^Password=^PASS^&wp-submit=Log Int&testcookie=1:Login failed'.
+
+Para que o hydra utilizasse as listas que já tinha criado, usei os parâmetros -L para ler a lista de usuários e -P para ler a lista de senhas; Em seguida passamos o endereço ip do alvo; o parâmetro -V indica que o ataque será feito a um formulário http usando o método Post e entre aspas simples, temos o caminho da página de login, os nomes dos campos na página de login e com será feita a captura de falha ao usarmos nossas listas.
+
+Abaixo temos o resultado do comando exectado:
+
+![nome-da-imagem8](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_12.png?raw=true)
+
+### Possivel problema
+
+Avaliando o resultado do Hydra, percebi que tive o mesmo resultado que encontrei no Medusa. Como ambas as ferramentas tiveram uma alta taxa de erro, decidi procurar algo sobre esse problema. Durante as buscas na internet, identifiquei alguns relatos sobre um problema no retorno da página atacada para ambas as ferramentas. Isso significa que quando a página ataca não retorna o resultado que aguardamos de forma exata, tanto o Hydra como o Medusa geram falso positivo. Isso indica que a página que estamos usando na simulção está trazendo várias informações na resposta do nosso ataque e os ambos os softwares estão com dificuldade de filtrar o resultado.
+
+### Simulando um Ataque SMB (Server Message Block)
 
 1º - Rodar a enumeração de usuários com enum4linux
 
