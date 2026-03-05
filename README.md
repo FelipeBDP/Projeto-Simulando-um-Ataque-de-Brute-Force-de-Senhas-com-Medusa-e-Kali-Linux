@@ -4,7 +4,7 @@
 
 ## Hardware e Software
 
- Utilizei um notebook com 32GB de mémoria RAM e um processador AMD Ryzen 7 5800H com 8 núcleos e 16 threads. Na parte de software, usei o VirtualBox para virtualizar os sistemas operacionais Kali Linux e um linux modificado para pentest chamado Metasploitable. Já os softwares para executar as simulações foram: NMap, Medusa e Hydra.
+ Utilizei um notebook com 32GB de mémoria RAM e um processador AMD Ryzen 7 5800H com 8 núcleos e 16 threads. Na parte de software, usei o VirtualBox para virtualizar os sistemas operacionais Kali Linux e um linux modificado para pentest chamado Metasploitable. Já os softwares para executar as simulações foram: Enum4linux, NMap, Medusa e Hydra.
 
 ## Executando as simulações de Brute Force
 
@@ -96,15 +96,25 @@ Abaixo temos o resultado do comando exectado:
 
 Avaliando o resultado do Hydra, percebi que tive o mesmo resultado que encontrei no Medusa. Como ambas as ferramentas tiveram uma alta taxa de erro, decidi procurar algo sobre esse problema. Durante as buscas na internet, identifiquei alguns relatos sobre um problema no retorno da página atacada para ambas as ferramentas. Isso significa que quando a página ataca não retorna o resultado que aguardamos de forma exata, tanto o Hydra como o Medusa geram falso positivo. Isso indica que a página que estamos usando na simulção está trazendo várias informações na resposta do nosso ataque e os ambos os softwares estão com dificuldade de filtrar o resultado.
 
-### Simulando um Ataque SMB (Server Message Block)
+### Simulando um Ataque a porta SMB (Server Message Block)
 
-1º - Rodar a enumeração de usuários com enum4linux
+Na úlitma simulação foi um ataque a porta SMB. Antes de realizar o ataque, foi utilizado o comando enum4linux -a endereço ip | tee enum4_output.txt. Esse comando gerou um arquivo com várias informações sobre a máquina que está sendo atacada. Dentre as informações, temos os usuários, pastas e outras informações.
 
-Comando: enum4linux -a 192.168.56.101 | tee enum4_output.txt
+A seguir temos os prints de todas as informações que conseguimos captura:
 
-2º - Na sequência podemos abrir o arquivo do comando que acabamos de rodar e visualizar usuários que sejam possíveis alvos de ataques. O número rid é o identificador relativo do usuário no sistema. Sempre que houver nomes de usuários genéricos como null ou interrogação geralmente são de usuários mais vulneráveis.
+![nome-da-imagem9](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_20.png?raw=true)
 
-Comando: less enum4_output.txt
+![nome-da-imagem10](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_12.png?raw=true)
+
+![nome-da-imagem11](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_26.png?raw=true)
+
+![nome-da-imagem12](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_35.png?raw=true)
+
+![nome-da-imagem13](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_53.png?raw=true)
+
+![nome-da-imagem14](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_01.png?raw=true)
+
+![nome-da-imagem15](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_04.png?raw=true)
 
 3º - Criando wordlists de usuários
 
