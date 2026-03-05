@@ -17,7 +17,7 @@ Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, 
 Sobre o comando nmap -sS endereço de rede/24, o -sS ==> envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faaça a varredura da rede inteira. Caso fosse necessário enviar diferto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
 
 ![nome-da-imagem](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_06.png?raw=true)
-![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.pngg?raw=true)
+![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.png?raw=true)
 
 ### Verificando quais portas estão abertas
 
