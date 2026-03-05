@@ -8,7 +8,11 @@
 
 ## Executando a simulação de Brute Force
 
-###
+### Encontrando o alvo
+
+No inicio da simulação, é aconselhado entrar na máquina virtual onde está sendo executado o Metasploitable e executar o comando ip -a para identificar o ip para usarmos na simulação. Devido a um problema na configuração da placa de rede no VirtuaBox, decidi usar um roteador de backup e sem internet para fazer a simulação. Além disso coloquei as placas de rede em modo Bridge e o problema foi resolvido.
+
+Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, decidi usar o comando nmap -sS endereço de rede/24 para executar uma varredura na rede e descobrir quais máquinas estavam conectadas no roteador. É importante salientar que coloquei mais algumas dispositivos na rede de proposito para a simulação ficar mais realista.
 
 ### Simulando Ataque FTP Simulando um cenário de auditoria em um servidor FTP que pode conter falhas de segurança
 
