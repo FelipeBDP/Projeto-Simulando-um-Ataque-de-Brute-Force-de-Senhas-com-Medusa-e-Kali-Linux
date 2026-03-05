@@ -25,9 +25,13 @@ Após identificar o alvo, o passo seguinte foi verificar se as portas ftp, ssh, 
 
 Este comando escaneia as portas 21(ftp) ,22(ssh) ,80(http) ,445(smdb) e 139(smdb). O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
 
+![nome-da-imagem2](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_20.png?raw=true)
+
 ### Verificando se a porta FTP está ativa
 
 Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta ftp estava ativa, foi usado o comando: ftp endereço de ip. Ao executar o comando, tivemos o retorno pedindo um usuário. Esse retorno indica que o ftp está ativo. É importante observar que só temos um endereço de ip como alvo e sabemos que a porta ftp está aberta, mas não conseguimos acessar nada somente com essas informações.
+
+![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_28.png?raw=true)
 
 ### Preparando o ataque Brute Force
 
