@@ -1,6 +1,6 @@
 # Relatório da simulação de Ataque de Brute Force de Senhas com Medusa e Kali Linux
 
- O realtório será dividido em 3 partes. Na primeira parte irei passar pelo hardware e software usado na simulação. Na segunda parte irei explicar como foi feito a simulação do ataque de Brute Force e na última eatapa, irei comentar quais ações podem ser usadas para mitigar as vunerabilidades exploradas.
+ O relatório será dividido em 3 partes. Na primeira parte irei passar pelo hardware e software usado na simulação. Na segunda parte irei explicar como foi feito a simulação do ataque de Brute Force e na última eatapa, irei comentar quais ações podem ser usadas para mitigar as vunerabilidades exploradas.
 
 ## Hardware e Software
 
