@@ -16,11 +16,6 @@
 
 Este comando escaneia as portas 21,22,80,445 e 139. O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
 
-Se a porta ftp estiver aberta tentaremos conectá-la diretamente.
-
-![Enumeração](https://i.imgur.com/KK3ZyLB.jpeg)
-
-&nbsp;
 
 2º - Conectando diretamente ao ftp para confirmar se está ativo.
 
@@ -28,11 +23,8 @@ Comando: ftp nú.me.ro.ip
 
 Caso a conexão aconteça pedirá o login e a senha. Como ainda não sabemos nenhum dos dois precisaremos fazer um ataque brute force (força bruta) utilizando a ferramenta Medusa para tentar descobri-los. Antes disso temos que criar duas listas: uma com possíveis nomes de usuários e outra com senhas comuns.
 
-![ftp login errado](https://i.imgur.com/SXoqjZ3.jpeg)
-
 Para sair do ftp é só digitar quit e apertar enter e para limpar a tela do terminal é só digitar clear e apertar enter
 
-&nbsp;
 
 ### Criando nomes de usuários e senhas comuns (wordlists) em diferentes arquivos e rodando o ataque
 
@@ -42,9 +34,6 @@ Comando usuários: echo -e "user\nmsfadmin\nadmin\nroot" > users.txt
 
 Comando senhas: echo -e "123456\npassword\nqwerty\nmsfadmin" > pass.txt
 
-![wordlists](https://i.imgur.com/OUaP9Fd.jpeg)
-
-&nbsp;
 
 2º - Rodando o ataque com a Medusa
 
@@ -54,17 +43,11 @@ Onde -t6 significa que estamos usando 6 threads simultâneas, o que torna o ataq
 
 No ataque foram encontrados o login msfadmin e a senha msfadmin como credenciais válidas. Isso significa que conseguimos acessar o sistema via ftp com essas credenciais.
 
-![](https://i.imgur.com/SSLel4z.jpeg)
-
-&nbsp;
 
 3º - Validando manualmente o acesso via ftp com as credenciais encontradas
 
 Comando: ftp nú.me.ro.ip
 
-![login ftp](https://i.imgur.com/vlWsj7h.jpeg)
-
-&nbsp;
 
 ### Simulando Ataque web (http) Simulando ataque brute force em formulários de login web (http) no sistema dvwa
 
@@ -72,9 +55,6 @@ Comando: ftp nú.me.ro.ip
 
 Na sequência abrir o painel de ferramentas do desenvolvedor na página de teste de login do dvwa clicando em f12 e em seguida clicar na guia network, na navegação do tipo POST e em Request, que nos mostrará tudo o que o navegador está enviando e recebendo durante a interação, incluindo os nomes dos parâmetros que o servidor espera receber. A Medusa vai simular em cima destes parâmetros.
 
-![dvwa](https://i.imgur.com/KO9hGQA.jpeg)
-
-&nbsp;
 
 2º - No terminal do Kali, após criadas as wordlists de usuários e de senhas, rodar o seguinte comando com a Medusa.
 
@@ -90,9 +70,6 @@ As credenciais corretas encontradas aparecerão com a palavra SUCCESS.
 
 Em seguida utilizamos o primeiro login e senha encontrados para acessar o sistema.
 
-![medusa http](https://i.imgur.com/U4ci2QC.jpeg)
-
-&nbsp;
 
 ### Simulando Ataque SMB (Server Message Block) Simulando ataques de enumeração e spraying contra o serviço SMB (Server Message Block)
 
@@ -104,10 +81,6 @@ Comando: enum4linux -a 192.168.56.101 | tee enum4_output.txt
 
 Comando: less enum4_output.txt
 
-![rid](https://i.imgur.com/GnDALRm.jpeg)
-
-&nbsp;
-
 3º - Criando wordlists de usuários
 
 No comando anterior conseguimos acesso aos nomes dos usuários reais, agora precisamos criar nosso arquivo de alvos e nosso arquivo de senhas.
@@ -116,11 +89,8 @@ Comando: echo -e "user\nmsfadmin\nservice" > smb_users.txt
 
 Comando: echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray
 
-![wordlists smb](https://i.imgur.com/hyk6zdF.jpeg)
-
 Ao contrário do brute force, que testa muitas senhas em um único usuário, o password spraying testa poucas senhas em muitos usuários.
 
-&nbsp;
 
 4º - Rodando ataque com Medusa
 
@@ -140,9 +110,6 @@ Onde:
 
 -T 50 significa até 50 hosts em paralelo.
 
-![medusa smb](https://i.imgur.com/V5D345c.jpeg)
-
-&nbsp;
 
 5º - Testando o acesso utilizando smbclient
 
