@@ -16,6 +16,8 @@ Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, 
 
 Sobre o comando nmap -sS endereço de rede/24, o -sS ==> envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faaça a varredura da rede inteira. Caso fosse necessário enviar diferto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
 
+Abaixo segue o prints da tela com a sáida do comando:
+
 ![nome-da-imagem](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_06.png?raw=true)
 ![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.png?raw=true)
 
@@ -25,35 +27,36 @@ Após identificar o alvo, o passo seguinte foi verificar se as portas ftp, ssh, 
 
 Este comando escaneia as portas 21(ftp) ,22(ssh) ,80(http) ,445(smdb) e 139(smdb). O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
 
+Abaixo segue o print da tela com a sáida do comando:
+
 ![nome-da-imagem2](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_20.png?raw=true)
 
 ### Verificando se a porta FTP está ativa
 
 Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta ftp estava ativa, foi usado o comando: ftp endereço de ip. Ao executar o comando, tivemos o retorno pedindo um usuário. Esse retorno indica que o ftp está ativo. É importante observar que só temos um endereço de ip como alvo e sabemos que a porta ftp está aberta, mas não conseguimos acessar nada somente com essas informações.
 
+Abaixo segue o print da tela com a sáida do comando:
+
 ![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_28.png?raw=true)
 
 ### Preparando o ataque Brute Force
 
-1º - Comandos para criar e salvar no Kali Linux arquivo de texto com possíveis nomes de usuários e arquivo com senhas comuns.
+Para iniciar o ataque de Brute Force, foram criados 2 arquivos de texto com algumas palavras. O primeiro arquivo se chama users.txt e representa uma lista de usuários e o segundo arquivo se chama pass.txt e representa uma lista de senhas. Para criar esses arquivos, foram usados o comandos echo -e "user\nmsfadmin\nadmin\nroot" > users.txt e  echo -e "123456\npassword\nqwerty\nmsfadmin" > pass.txt, onde o primro comando cria o arquivo de usuários e o segundo comando cria o arquivo de senhas.
 
-Comando usuários: echo -e "user\nmsfadmin\nadmin\nroot" > users.txt
+O comando echo é usado para mostrar o resultado de um script na tela, mas em nosso exemplo, estamos usando ele para construir um arquivo de texto. O -e é para identificar algum comando especifico como o caso da \. A \ indica que cada palavra ficara em uma linha. Por último temos o >, que indica aonde o texto será salvo.
 
-Comando senhas: echo -e "123456\npassword\nqwerty\nmsfadmin" > pass.txt
+## Executando o ataque com a Medusa
+Com as listas de usuários e senhas prontas, está na hora de executar o ataque de Brute Force. Na simulação que estamos fazendo, o software utilizado é o Medusa. O Medusa irá usar as duas listas para descobrir qual é o usuário e senha que podem acessar a porta FTP do ip 192.168.99.4. O comando utilizado foi medusa -h endereço de ip -U users.txt -P pass.txt -M ftp -t 6.
 
+O comando medusa usa o -h para indicar o endereço ip do alvo; -U é usado para lista de usuários; -P é usado para uma lista de senhas; -t é usado para configurar o número de threads simultâneas, o que torna o ataque mais rápido.
 
-2º - Rodando o ataque com a Medusa
+O resultado final do ataque identificou o usuário msfadmin e a senha msfadmin como credenciais válidas.
 
-Comando: medusa -h nú.me.ro.ip -U users.txt -P pass.txt -M ftp -t6
+## testando o resultado encontrado
 
-Onde -t6 significa que estamos usando 6 threads simultâneas, o que torna o ataque mais rápido.
+Usando novamente o comando ftp endereço de ip, iremos digitar o usuário msfadmin e a senha msfadmin para verificar se realmente conseguiremos acessar a porta FTP.
 
-No ataque foram encontrados o login msfadmin e a senha msfadmin como credenciais válidas. Isso significa que conseguimos acessar o sistema via ftp com essas credenciais.
-
-
-3º - Validando manualmente o acesso via ftp com as credenciais encontradas
-
-Comando: ftp nú.me.ro.ip
+Conforme pode ser visto na imagem abaixo, consegumos acessar acesso a porta FTP com sucesso.
 
 
 ### Simulando Ataque web (http) Simulando ataque brute force em formulários de login web (http) no sistema dvwa
