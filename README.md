@@ -6,7 +6,7 @@
 
  Utilizei um notebook com 32GB de mémoria RAM e um processador AMD Ryzen 7 5800H com 8 núcleos e 16 threads. Na parte de software, usei o VirtualBox para virtualizar os sistemas operacionais Kali Linux e um linux modificado para pentest chamado Metasploitable. Já os softwares para executar as simulações foram: NMap, Medusa e Hydra.
 
-## Executando a simulação de Brute Force
+## Executando as simulações de Brute Force
 
 ### Encontrando o alvo
 
@@ -39,7 +39,7 @@ Abaixo segue o print da tela com a saída do comando:
 
 ![nome-da-imagem4](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-teste.png?raw=true)
 
-### Preparando o ataque Brute Force
+### Preparando o ataque Brute Force na porta FTP
 
 Para iniciar o ataque de Brute Force, foram criados 2 arquivos de texto com algumas palavras. O primeiro arquivo se chama users.txt e representa uma lista de usuários e o segundo arquivo se chama pass.txt e representa uma lista de senhas. Para criar esses arquivos, foram usados o comandos echo -e "user\nmsfadmin\nadmin\nroot" > users.txt e  echo -e "123456\npassword\nqwerty\nmsfadmin" > pass.txt, onde o primro comando cria o arquivo de usuários e o segundo comando cria o arquivo de senhas.
 
@@ -54,7 +54,7 @@ O resultado final do ataque identificou o usuário msfadmin e a senha msfadmin c
 
 ![nome-da-imagem5]()
 
-## testando o resultado encontrado
+### Testando o resultado encontrado
 
 Usando novamente o comando ftp endereço de ip, iremos digitar o usuário msfadmin e a senha msfadmin para verificar se realmente conseguiremos acessar a porta FTP.
 
@@ -62,26 +62,22 @@ Conforme pode ser visto na imagem abaixo, consegumos acessar acesso a porta FTP 
 
 ![nome-da-imagem6](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-sucesso.png?raw=true)
 
-### Simulando Ataque web (http) Simulando ataque brute force em formulários de login web (http) no sistema dvwa
+### Simulando um Ataque Web(HTTP)
 
-1º - Acessar, no navegador firefox do Kali Linux, o endereço nú.me.ro.ip/dvwa/login.php para visualizar a página de teste de login do dvwa.
+Agora iremos realizar um ataque na porta 80(HTTP). O alvo continua o mesmo, mas nesse ataque, estamos simulando que o nosso alvo tem hospedado um site que exige login e senha. O primeiro passo do nosso ataque foi acessa o site pelo navegador Firefox instalado no kali Linux. O endereço do site é endereço ip do alvo/dvwa/login.php. Antes de digitarmos qualquer usuário e senha, foi pedido que fosse aberto o painel de ferramentas do desenvolvedor na página. Para realizar essa tarefa, foi necessário clicar na tecla f12 e em seguida clicar na guia network, na navegação do tipo POST e em Request, que nos mostrará tudo o que o navegador está enviando e recebendo durante a interação, incluindo os nomes dos parâmetros que o servidor espera receber.
 
-Na sequência abrir o painel de ferramentas do desenvolvedor na página de teste de login do dvwa clicando em f12 e em seguida clicar na guia network, na navegação do tipo POST e em Request, que nos mostrará tudo o que o navegador está enviando e recebendo durante a interação, incluindo os nomes dos parâmetros que o servidor espera receber. A Medusa vai simular em cima destes parâmetros.
+### Executando o ataque na página Web
 
+Para esse ataque, usaremos nvamente o Medusa, mas nesse cas em especifico, o comando ganhará novos parâmetros. Segue o comando utilizado:
 
-2º - No terminal do Kali, após criadas as wordlists de usuários e de senhas, rodar o seguinte comando com a Medusa.
+medusa -h endereço de ip -U users.txt -P pass.txt -M http -m PAGE:'/dvwa/login.php' -m FORM:'username=^USER^&password=^PASS^&Login=Login' -m 'FAIL=Login failed' -t 6
 
-Comando: medusa -h nú.me.ro.ip -U users.txt -P pass.txt -M http
+A difrença d comando atual para o comando utilizado no ataque a porta FTP, é que temos o uso do -m. Estamos usando o -m para passar alguns parâmetros para o Medusa. O prâmetro PAGE é o caminho da página. Por mais que o Medusa tenha o endereço ip de ataque, o Medusa precisa saber qual é o caminho da página de login onde ocorrerá o ataque de brute force. Além disso, precisamos indicar os nomes dos campos que estão na página de login, por isso temos o parâmetro FORM e os nomes username e password. Se a página usasse outros nomes como login e pass, teríamos que realizar essa alteração. O parâmetro FAIL, é usado para idnetificar quais usuários e senhas da nossa lista retornaram com falha.
 
--m PAGE:'/dvwa/login.php'
+Segue resultado do comando:
 
--m FORM:'username=^USER^&password=^PASS^&Login=Login'
+![nome-da-imagem7](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_02.png?raw=true)
 
--m 'FAIL=Login failed' -t 6
-
-As credenciais corretas encontradas aparecerão com a palavra SUCCESS.
-
-Em seguida utilizamos o primeiro login e senha encontrados para acessar o sistema.
 
 
 ### Simulando Ataque SMB (Server Message Block) Simulando ataques de enumeração e spraying contra o serviço SMB (Server Message Block)
