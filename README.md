@@ -37,7 +37,7 @@ Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta 
 
 Abaixo segue o print da tela com a sáida do comando:
 
-![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_28.png?raw=true)
+![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-teste.png?raw=true)
 
 ### Preparando o ataque Brute Force
 
@@ -52,12 +52,15 @@ O comando medusa usa o -h para indicar o endereço ip do alvo; -U é usado para 
 
 O resultado final do ataque identificou o usuário msfadmin e a senha msfadmin como credenciais válidas.
 
+![nome-da-imagem5]()
+
 ## testando o resultado encontrado
 
 Usando novamente o comando ftp endereço de ip, iremos digitar o usuário msfadmin e a senha msfadmin para verificar se realmente conseguiremos acessar a porta FTP.
 
 Conforme pode ser visto na imagem abaixo, consegumos acessar acesso a porta FTP com sucesso.
 
+![nome-da-imagem5](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-sucesso.png?raw=true)
 
 ### Simulando Ataque web (http) Simulando ataque brute force em formulários de login web (http) no sistema dvwa
 
