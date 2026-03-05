@@ -76,7 +76,7 @@ A difrença d comando atual para o comando utilizado no ataque a porta FTP, é q
 
 Segue resultado do comando:
 
-[nome-da-imagem7](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_02.png?raw=true)
+![nome-da-imagem7](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_02.png?raw=true)
 
 ### Um resultado não esperado
 
