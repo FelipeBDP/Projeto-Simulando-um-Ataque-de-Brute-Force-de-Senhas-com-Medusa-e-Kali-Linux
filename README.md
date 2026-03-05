@@ -14,7 +14,7 @@ No inicio da simulação, é aconselhado entrar na máquina virtual onde está s
 
 Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, decidi usar o comando nmap -sS endereço de rede/24 para executar uma varredura na rede e descobrir quais máquinas estavam conectadas no roteador. É importante salientar que coloquei mais algumas dispositivos na rede de proposito para a simulação ficar mais realista.
 
-Sobre o comando nmap -sS endereço de rede/24, o -sS ==> envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faaça a varredura da rede inteira. Caso fosse necessário enviar diferto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
+Sobre o comando nmap -sS endereço de rede/24, o -sS envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faça a varredura da rede inteira. Caso fosse necessário enviar direto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
 
 Abaixo segue o prints da tela com a sáida do comando:
 
