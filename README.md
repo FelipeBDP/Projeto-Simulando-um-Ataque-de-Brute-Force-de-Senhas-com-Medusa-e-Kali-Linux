@@ -100,17 +100,19 @@ Avaliando o resultado do Hydra, percebi que tive o mesmo resultado que encontrei
 
 Na úlitma simulação foi um ataque a porta SMB. Antes de realizar o ataque, foi utilizado o comando enum4linux -a endereço ip | tee enum4_output.txt. Esse comando gerou um arquivo com várias informações sobre a máquina que está sendo atacada. Dentre as informações, temos os usuários, pastas e outras informações.
 
-A seguir temos os prints de todas as informações que conseguimos captura:
+A seguir temos os prints de todas as informações que foram captura:
 
-![nome-da-imagem9](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_26.png?raw=true)
+![nome-da-imagem9](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_20.png?raw=true)
 
-![nome-da-imagem10](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_35.png?raw=true)
+![nome-da-imagem10](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_26.png?raw=true)
 
-![nome-da-imagem11](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_53.png?raw=true)
+![nome-da-imagem11](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_35.png?raw=true)
 
-![nome-da-imagem12](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_01.png?raw=true)
+![nome-da-imagem12](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_02_53.png?raw=true)
 
-![nome-da-imagem13](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_04.png?raw=true)
+![nome-da-imagem13](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_01.png?raw=true)
+
+![nome-da-imagem14](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_04.png?raw=true)
 
 3º - Criando wordlists de usuários
 
@@ -122,7 +124,7 @@ Comando: echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray
 
 Ao contrário do brute force, que testa muitas senhas em um único usuário, o password spraying testa poucas senhas em muitos usuários.
 
-![nome-da-imagem14](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Captura%20de%20tela%202026-03-05%20153806.png?raw=true)
+![nome-da-imagem15](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Captura%20de%20tela%202026-03-05%20153806.png?raw=true)
 
 4º - Rodando ataque com Medusa
 
@@ -142,7 +144,7 @@ Onde:
 
 -T 50 significa até 50 hosts em paralelo.
 
-![nome-da-imagem15](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Captura%20de%20tela%202026-03-05%20153815.png?raw=true)
+![nome-da-imagem16](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Captura%20de%20tela%202026-03-05%20153815.png?raw=true)
 
 5º - Testando o acesso utilizando smbclient
 
@@ -150,4 +152,4 @@ Verifica se teremos acesso como administrador através das credenciais encontrad
 
 Comando: smbclient -L //192.168.56.101 -U msfadm
 
-![nome-da-imagem16](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_30.png?raw=true)
+![nome-da-imagem17](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_03_30.png?raw=true)
