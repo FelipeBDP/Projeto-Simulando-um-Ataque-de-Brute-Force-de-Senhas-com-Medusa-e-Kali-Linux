@@ -16,7 +16,7 @@ Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, 
 
 Sobre o comando nmap -sS endereço de rede/24, o -sS envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faça a varredura da rede inteira. Caso fosse necessário enviar direto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
 
-Abaixo segue o prints da tela com a sáida do comando:
+Abaixo segue o prints da tela com a saída do comando:
 
 ![nome-da-imagem](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_06.png?raw=true)
 ![nome-da-imagem1](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_13.png?raw=true)
@@ -27,7 +27,7 @@ Após identificar o alvo, o passo seguinte foi verificar se as portas ftp, ssh, 
 
 Este comando escaneia as portas 21(ftp) ,22(ssh) ,80(http) ,445(smdb) e 139(smdb). O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
 
-Abaixo segue o print da tela com a sáida do comando:
+Abaixo segue o print da tela com a saída do comando:
 
 ![nome-da-imagem2](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/Screenshot_2026-03-04_16_01_20.png?raw=true)
 
@@ -35,7 +35,7 @@ Abaixo segue o print da tela com a sáida do comando:
 
 Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta ftp estava ativa, foi usado o comando: ftp endereço de ip. Ao executar o comando, tivemos o retorno pedindo um usuário. Esse retorno indica que o ftp está ativo. É importante observar que só temos um endereço de ip como alvo e sabemos que a porta ftp está aberta, mas não conseguimos acessar nada somente com essas informações.
 
-Abaixo segue o print da tela com a sáida do comando:
+Abaixo segue o print da tela com a saída do comando:
 
 ![nome-da-imagem3](https://github.com/FelipeBDP/Projeto-Simulando-um-Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux/blob/main/images/ftp-teste.png?raw=true)
 
