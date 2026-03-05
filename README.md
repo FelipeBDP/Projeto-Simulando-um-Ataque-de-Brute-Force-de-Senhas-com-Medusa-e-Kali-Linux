@@ -14,23 +14,19 @@ No inicio da simulação, é aconselhado entrar na máquina virtual onde está s
 
 Como fiz essa alteração na rede que as máquinas virtuais estavam conectadas, decidi usar o comando nmap -sS endereço de rede/24 para executar uma varredura na rede e descobrir quais máquinas estavam conectadas no roteador. É importante salientar que coloquei mais algumas dispositivos na rede de proposito para a simulação ficar mais realista.
 
-### Simulando Ataque FTP Simulando um cenário de auditoria em um servidor FTP que pode conter falhas de segurança
+Sobre o comando nmap -sS endereço de rede/24, o -sS ==> envia pacotes TCP com a flag SYN para as portas do alvo com intuito de iniciar uma conexão. Ao receber a resposta para continuar a conexão, o nmap não continua. Esse método é usado por ser um furtivo. Já a questão do endereço de rede/24, é para que o nmap faaça a varredura da rede inteira. Caso fosse necessário enviar diferto ao alvo, era só susbtituir o endereço de ip da rede pelo endereço de ip do alvo sem o /24.
 
-1º - Enumeração para descobrir quais serviços estão disponíveis no sistema com suspeita de vulnerabilidade. comando: nmap -sV -p 21,22,80,445,139 nú.me.ro.ip
+### Verificando quais portas estão abertas
 
-Este comando escaneia as portas 21,22,80,445 e 139. O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
+Após identificar o alvo, o passo seguinte foi verificar se as portas ftp, ssh, http e smdb estavam abertas. Para fazer essa tarefa foi executado o comando: nmap -sV -p 21,22,80,445,139 endereço de ip
 
+Este comando escaneia as portas 21(ftp) ,22(ssh) ,80(http) ,445(smdb) e 139(smdb). O parâmetro -sV identifica a versão do serviço que está rodando em cada porta.
 
-2º - Conectando diretamente ao ftp para confirmar se está ativo.
+### Verificando se a porta FTP está ativa
 
-Comando: ftp nú.me.ro.ip
+Na simulação, o primeiro ataque seria na porta ftp. Para verificar se a porta ftp estava ativa, foi usado o comando: ftp endereço de ip. Ao executar o comando, tivemos o retorno pedindo um usuário. Esse retorno indica que o ftp está ativo. É importante observar que só temos um endereço de ip como alvo e sabemos que a porta ftp está aberta, mas não conseguimos acessar nada somente com essas informações.
 
-Caso a conexão aconteça pedirá o login e a senha. Como ainda não sabemos nenhum dos dois precisaremos fazer um ataque brute force (força bruta) utilizando a ferramenta Medusa para tentar descobri-los. Antes disso temos que criar duas listas: uma com possíveis nomes de usuários e outra com senhas comuns.
-
-Para sair do ftp é só digitar quit e apertar enter e para limpar a tela do terminal é só digitar clear e apertar enter
-
-
-### Criando nomes de usuários e senhas comuns (wordlists) em diferentes arquivos e rodando o ataque
+### Preparando o ataque Brute Force
 
 1º - Comandos para criar e salvar no Kali Linux arquivo de texto com possíveis nomes de usuários e arquivo com senhas comuns.
 
